@@ -9,9 +9,9 @@ export default class ReviewList extends React.Component {
   }
 
   render() {
-    const { users } = this.props;
-    const listItems = users.map(user => (
-      <ReviewItem user={user} />
+    const { reviews } = this.props;
+    const listItems = reviews.map(review => (
+      <ReviewItem review={review} />
     ));
     return (
       <div>

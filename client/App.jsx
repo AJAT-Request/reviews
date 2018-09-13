@@ -9,31 +9,36 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: [],
+      reviews: [],
     };
   }
 
   componentDidMount() {
+    const id = window.location.pathname.slice(7);
+    console.log(id);
     $.ajax({
-      url: 'http://localhost:3000/users',
+      url: `http://localhost:3000/reviews/?${id}`,
+      data: id,
       success: (data) => {
-        this.setState({ users: data.data });
+        const parsedData = JSON.parse(data);
+        this.setState({ reviews: parsedData });
+        console.log(this.state);
       },
     });
   }
 
   render() {
-    const { users } = this.state;
+    const { reviews } = this.state;
     return (
       <div>
         <h2>
-          { users.length }
+          { reviews.length }
           {' '}
           Reviews
         </h2>
         <Search />
         <Ratings />
-        <ReviewList users={users} />
+        <ReviewList reviews={reviews} />
       </div>
     );
   }
