@@ -6,9 +6,7 @@ USE reviews;
 
 CREATE TABLE listing (
 	id INT(2) NOT NULL AUTO_INCREMENT,
-	name varchar(50) NOT NULL,
-	average_rating INT(1) NOT NULL,
-	total_review_count INT(6) NOT NULL,
+	name varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
 

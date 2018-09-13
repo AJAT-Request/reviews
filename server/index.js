@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
 
-app.get('/', (req, res) => {
+app.get('/rooms:roomId', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist', '/index.html'));
 });
 
@@ -28,15 +28,6 @@ app.get('/users', (req, res) => {
         message: 'This house was alright.',
       }],
   };
-  // const generateData = () => {
-  //   for (let i = 0; i < 100; i + 1) {
-  //     const user = {};
-  //     user.name = faker.name.findName();
-  //     user.message = 'lorem ipsum bla bla bla';
-  //     arrayOfUsers.push(user);
-  //   }
-  // };
-  // generateData();
   res.send(arrayOfUsers);
 });
 
