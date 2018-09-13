@@ -7,16 +7,17 @@ export default class ReviewItem extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { review } = this.props;
     let item;
-    if (user) {
+    if (review) {
       item = (
         <div>
-          {user.name}
+          <b>{review.name}</b>
+          <br />
           {' '}
-          {user.date}
+          {review.review_text}
           {' '}
-          {user.message}
+          <img src={review.image_url} alt="user" />
         </div>
       );
     }
