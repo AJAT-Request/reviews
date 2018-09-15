@@ -15,14 +15,12 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const id = window.location.pathname.slice(7);
-    console.log(id);
     $.ajax({
       url: `http://localhost:3000/reviews/?${id}`,
       data: id,
       success: (data) => {
         const parsedData = JSON.parse(data);
         this.setState({ reviews: parsedData });
-        console.log(this.state);
       },
     });
   }
