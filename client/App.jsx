@@ -3,7 +3,9 @@ import $ from 'jquery';
 import Search from './Search.jsx';
 import Ratings from './Ratings.jsx';
 import ReviewList from './ReviewList.jsx';
-
+import {
+  Container, HeaderContainer, TotalReviews, SearchBox,
+} from './styles.js'
 
 export default class App extends React.Component {
   constructor() {
@@ -20,7 +22,9 @@ export default class App extends React.Component {
       data: id,
       success: (data) => {
         const parsedData = JSON.parse(data);
-        this.setState({ reviews: parsedData });
+        this.setState({ reviews: parsedData }, () => {
+          console.log(this.state);
+        });
       },
     });
   }
@@ -29,14 +33,22 @@ export default class App extends React.Component {
     const { reviews } = this.state;
     return (
       <div>
-        <h2>
-          { reviews.length }
-          {' '}
-          Reviews
-        </h2>
-        <Search />
-        <Ratings />
-        <ReviewList reviews={reviews} />
+        <Container>
+          <HeaderContainer>
+            <TotalReviews>
+              <b>
+                { reviews.length }
+                {' '}
+              Reviews
+              </b>
+            </TotalReviews>
+            <SearchBox>
+              <Search />
+            </SearchBox>
+          </HeaderContainer>
+          <Ratings reviews={reviews} />
+          <ReviewList reviews={reviews} />
+        </Container>
       </div>
     );
   }

@@ -8,9 +8,7 @@ export default class PaginationBar extends React.Component {
   }
 
   render() {
-    const { reviews } = this.props;
-    const { handlePageChange } = this.props;
-    const { currentPage } = this.props;
+    const { reviews, handlePageChange, currentPage } = this.props;
     const totalPages = Math.ceil(reviews.length / 7);
     let previous;
     if (currentPage !== 1) {

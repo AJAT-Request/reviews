@@ -12,6 +12,9 @@
     "seed": "node ./server/db/seed.js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
     "express": "^4.16.3",
@@ -23,7 +26,8 @@
     "popper.js": "^1.14.4",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "styled-components": "^3.4.7"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
