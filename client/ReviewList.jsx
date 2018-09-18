@@ -1,5 +1,4 @@
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
 import ReviewItem from './ReviewItem.jsx';
 import PaginationBar from './PaginationBar.jsx'
 
@@ -55,19 +54,15 @@ export default class ReviewList extends React.Component {
         counter = 1;
       }
     }
-    let listItems;
+    let listItems = '';
     if (masterArray[0] !== undefined) {
       listItems = masterArray[currentPage - 1].map(review => (
         <ReviewItem key={review.id} review={review} />
       ));
-    } else {
-      listItems = 'Loading...';
     }
     return (
       <div>
-        <ListGroup>
-          { listItems }
-        </ListGroup>
+        { listItems }
         <PaginationBar
           reviews={reviews}
           handlePageChange={this.handlePageChange}
