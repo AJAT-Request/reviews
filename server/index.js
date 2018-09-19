@@ -1,15 +1,16 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const connection = require('./db/index.js');
 
 const app = express();
-// app.use((req, res, next) => {
-//   console.log(`now serving ${req.method} at ${req.url}`);
-//   next();
-// });
+
 app.use(express.static(path.join(__dirname, '../dist')));
-// app.use(bodyParser.json({ type: 'application/json' }));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 app.listen(3002, () => {
   console.log('listening on port 3002');
