@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { Image } from 'react-bootstrap';
-import { ListItem, ReviewProfileImage } from './styles.js'
+import { ListItem, ReviewProfileImage, ListItemHeader, NameAndDateContainer, ProfileImageContainer, NameText, DateText } from './styles.js'
 
 export default class ReviewItem extends React.Component {
   constructor(props) {
@@ -17,12 +17,15 @@ export default class ReviewItem extends React.Component {
       item = (
         <div>
           <ListItem>
-            <ReviewProfileImage src={review.image_url} circle alt={review.name} />
-            {' '}
-            <b>{review.name}</b>
-            <br />
-            {date}
-            <br />
+            <ListItemHeader>
+              <ProfileImageContainer>
+                <ReviewProfileImage src={review.image_url} circle alt={review.name} />
+              </ProfileImageContainer>
+              <NameAndDateContainer>
+                <NameText>{review.name}</NameText>
+                <DateText>{date}</DateText>
+              </NameAndDateContainer>
+            </ListItemHeader>
             {review.review_text}
           </ListItem>
         </div>

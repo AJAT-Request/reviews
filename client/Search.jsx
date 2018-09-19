@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchInput } from './styles.js'
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class Search extends React.Component {
 
   render() {
     return (
-      <input placeholder="Search reviews" />
+      <SearchInput placeholder="Search reviews" />
     );
   }
 }
