@@ -18,7 +18,8 @@ export default class Ratings extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { reviews, updateTotalAvgRating } = this.props;
+    const { reviews } = this.props;
+    const { updateTotalAvgRating } = this.props;
     if (reviews !== prevProps.reviews) {
       const roundHalf = n => Math.round(n * 2) / 2;
       let totalAvgRating = 0;
@@ -30,7 +31,7 @@ export default class Ratings extends React.Component {
         }
         totalAvgRating += (sum / reviews.length);
         const stateProp = Object.keys(this.state)[i];
-        this.setState({ [stateProp]: roundHalf(totalAvgRating) });
+        this.setState({ [stateProp]: roundHalf(sum / reviews.length) });
       }
       updateTotalAvgRating(roundHalf(totalAvgRating / 6));
     }
