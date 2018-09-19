@@ -31,7 +31,7 @@ export default class App extends React.Component {
   componentDidMount() {
     const id = window.location.pathname.slice(7);
     $.ajax({
-      url: `http://localhost:3000/reviews/?${id}`,
+      url: `http://localhost:3002/reviews/?${id}`,
       data: id,
       success: (data) => {
         const parsedData = JSON.parse(data);
