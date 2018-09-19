@@ -5,14 +5,6 @@ import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { RatingsContainer, RatingsLeftContainer, RatingsRightContainer, RatingTextAndStarsContainer, RatingText, RatingStars } from './styles.js';
 
 export default class Ratings extends React.Component {
-  // static intToStars(rating) {
-  //   let stars = [...Array(Math.floor(rating))].map(() => <RatingStars><FontAwesomeIcon icon="star" /></RatingStars>);
-  //   if (rating.toString().length > 1) {
-  //     stars = stars.concat(<RatingStars><FontAwesomeIcon icon="star-half-alt" /></RatingStars>);
-  //   }
-  //   return stars;
-  // }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,8 +18,7 @@ export default class Ratings extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { reviews } = this.props;
-    const { updateTotalAvgRating } = this.props;
+    const { reviews, updateTotalAvgRating } = this.props;
     if (reviews !== prevProps.reviews) {
       const roundHalf = n => Math.round(n * 2) / 2;
       let totalAvgRating = 0;
@@ -39,7 +30,7 @@ export default class Ratings extends React.Component {
         }
         totalAvgRating += (sum / reviews.length);
         const stateProp = Object.keys(this.state)[i];
-        this.setState({ [stateProp]: roundHalf(sum / reviews.length) });
+        this.setState({ [stateProp]: roundHalf(totalAvgRating) });
       }
       updateTotalAvgRating(roundHalf(totalAvgRating / 6));
     }

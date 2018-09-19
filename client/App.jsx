@@ -47,8 +47,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { reviews } = this.state;
-    const { totalAvgRating } = this.state;
+    const { reviews, totalAvgRating } = this.state;
     return (
       <div>
         <Container>
